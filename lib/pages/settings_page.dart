@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:muhammad_iqbal_al_afgany_pekan02/bloc/theme_cubit.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -37,12 +39,13 @@ class _SettingsPageState extends State<SettingsPage> {
             ListTile(
               leading: SvgPicture.asset('assets/dark_mode.svg'),
               title: Text('Theme'),
-              trailing: Switch(
-                value: darkMode,
-                onChanged: (value) {
-                  setState(() {
-                    darkMode = value;
-                  });
+              trailing: BlocBuilder<ThemeCubit, ThemeData>(
+                builder: (context, state) {
+                  return Switch(
+                    value: state.brightness == Brightness.dark,
+                    onChanged: (value) =>
+                        context.read<ThemeCubit>().toggleTheme(),
+                  );
                 },
               ),
               onTap: null,

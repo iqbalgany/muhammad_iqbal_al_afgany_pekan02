@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:muhammad_iqbal_al_afgany_pekan02/bloc/theme_cubit.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,32 +20,42 @@ class _HomePageState extends State<HomePage> {
             SizedBox(height: 30),
 
             /// Header
-            ListTile(
-              leading: Container(
-                width: 50,
-                height: 50,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(
-                      'https://www.mancity.com/meta/media/e2lawnab/erling-haaland.png',
+            BlocBuilder<ThemeCubit, ThemeData>(
+              builder: (context, theme) {
+                return ListTile(
+                  leading: Container(
+                    width: 50,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(
+                          'https://www.mancity.com/meta/media/e2lawnab/erling-haaland.png',
+                        ),
+                      ),
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: theme.brightness == Brightness.light
+                            ? Colors.black
+                            : Colors.blue,
+                      ),
                     ),
                   ),
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.black),
-                ),
-              ),
-              title: Text('Welcome Back'),
-              titleTextStyle: TextStyle(fontSize: 12, color: Colors.grey),
-              subtitle: Text('Erling Haaland'),
-              subtitleTextStyle: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-              trailing: IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.notifications_none_outlined),
-              ),
+                  title: Text('Welcome Back'),
+                  titleTextStyle: TextStyle(fontSize: 12, color: Colors.grey),
+                  subtitle: Text('Erling Haaland'),
+                  subtitleTextStyle: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: theme.brightness == Brightness.light
+                        ? Colors.black
+                        : Colors.white,
+                  ),
+                  trailing: IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.notifications_none_outlined),
+                  ),
+                );
+              },
             ),
             SizedBox(height: 10),
 
