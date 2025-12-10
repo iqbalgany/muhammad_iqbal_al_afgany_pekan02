@@ -39,14 +39,17 @@ class ProfilePage extends StatelessWidget {
                       child: Container(
                         padding: EdgeInsets.all(3),
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.blue),
+                          border: Border.all(color: Colors.white),
                           borderRadius: BorderRadius.circular(10),
                           color: Colors.blue,
                         ),
                         child: SvgPicture.asset(
                           'assets/pencil.svg',
                           width: 20,
-                          color: Colors.white,
+                          colorFilter: ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn,
+                          ),
                         ),
                       ),
                     ),
@@ -129,7 +132,7 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
               ),
-              child: Text('Submit'),
+              child: Text('Save'),
             ),
           ],
         ),

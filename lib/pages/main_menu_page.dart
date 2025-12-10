@@ -20,19 +20,30 @@ class _MainMenuPageState extends State<MainMenuPage> {
       body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
-        backgroundColor: Colors.blue,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.black,
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.blue,
         onTap: (index) {
           setState(() {
             currentIndex = index;
           });
         },
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+            icon: currentIndex == 0
+                ? Icon(Icons.home)
+                : Icon(Icons.home_outlined),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: currentIndex == 1
+                ? Icon(Icons.person)
+                : Icon(Icons.person_outline),
+            label: 'Profile',
+          ),
+          BottomNavigationBarItem(
+            icon: currentIndex == 2
+                ? Icon(Icons.settings)
+                : Icon(Icons.settings_outlined),
             label: 'Settings',
           ),
         ],
