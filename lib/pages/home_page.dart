@@ -52,7 +52,12 @@ class _HomePageState extends State<HomePage> {
                   ),
                   trailing: IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.notifications_none_outlined),
+                    icon: Icon(
+                      Icons.notifications_none_outlined,
+                      color: theme.brightness == Brightness.light
+                          ? Colors.black
+                          : Colors.blue,
+                    ),
                   ),
                 );
               },
